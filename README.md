@@ -22,3 +22,22 @@ react-native-screens
   Đồng bộ hóa với các phép tính dựa trên layout: Khi bạn cần thực hiện các thay đổi đối với DOM hoặc layout mà phải được thực hiện trước khi trình duyệt render để tránh các phép tính hoặc layout sai lệch.
 
   Tránh nhấp nháy hoặc giật (flicker): Nếu bạn có một side effect có thể làm cho UI của bạn trông nhấp nháy hoặc không nhất quán, hãy dùng useLayoutEffect để đảm bảo mọi thay đổi xảy ra ngay lập tức.
+
+# Sử dụng context API
+
+là một công cụ mạnh mẽ để truyền dữ liệu giữa các thành phần mà không cần phải truyền qua từng cấp (props drilling). Điều này đặc biệt hữu ích khi bạn cần chia sẻ trạng thái hoặc dữ liệu giữa nhiều thành phần mà không muốn truyền dữ liệu qua từng cấp của cây thành phần.
+
+- Khi nào nên sử dụng Context API?
+
+* Truyền dữ liệu qua nhiều cấp: Khi bạn cần truyền dữ liệu từ một thành phần tổ tiên đến các thành phần con nhiều cấp dưới mà không muốn truyền qua từng cấp (props drilling).
+* Chia sẻ trạng thái toàn cục: Khi có những trạng thái hoặc dữ liệu cần được sử dụng ở nhiều nơi trong ứng dụng, như trạng thái người dùng đã đăng nhập, chủ đề giao diện (theme), hoặc ngôn ngữ.
+
+- Cách sử dụng:
+
+* Dùng createContext() để tạo context
+* Dùng Provider để quản lý trạng thái toàn cục của hệ sinh thái sử dụng context, có thể cung cấp dữ liệu hoặc chia sẻ trạng thái đến cái thành phần con mà không cần dùng props
+* Dùng useContext() hoặc Consumer để sử dụng context
+
+# Tư duy
+
+- Muốn xóa 1 đối tượng có trong [] state, ta set lại giá trị [] bằng giá trị [] đã fillter chỉ lấy các giá trị khác giá trị cần loại bỏ
